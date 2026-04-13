@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portail officiel de la Commune de Marsassoum — Accueil, actualités et services municipaux." />
+  <title>Accueil — Commune de Marsassoum</title>
+
+  <!-- Google Fonts : Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles personnalisés du projet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR — identique sur toutes les pages
+════════════════════════════════════════════ -->
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <!-- Identité / Logo -->
+    <a class="navbar-brand" href="index.html">
+      <!--
+        LOGO PERSONNALISÉ :
+        Remplacez le div .brand-logo par :
+        <img src="assets/images/logo.png" alt="Logo Marsassoum" class="brand-logo" />
+      -->
+      <div class="brand-logo">M</div>
+      <div>
+        <div class="brand-text-main">Marsassoum</div>
+        <div class="brand-text-sub">Portail Officiel</div>
+      </div>
+    </a>
+
+    <!-- Bouton hamburger (mobile) -->
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens de navigation -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="mairie.html">Mairie</a></li>
+        <li class="nav-item"><a class="nav-link" href="demarches.html">Démarches</a></li>
+        <li class="nav-item"><a class="nav-link" href="actualites.html">Actualités</a></li>
+        <li class="nav-item"><a class="nav-link" href="territoire.html">Territoire</a></li>
+        <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <!-- Bouton Dark Mode -->
+      <button id="darkModeToggle" class="ms-3" title="Basculer le mode sombre">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 1 — HÉROS
+════════════════════════════════════════════ -->
+<section class="hero-section">
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+
+      <!-- Texte principal -->
+      <div class="col-lg-6 fade-up">
+        <div class="hero-badge">
+          <i class="fas fa-map-marker-alt"></i>
+          Région de Sédhiou — Casamance, Sénégal
+        </div>
+
+        <h1 class="hero-title">
+          Bienvenue à la<br>
+          Commune de<br>
+          <span>Marsassoum</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Votre portail officiel pour accéder aux services municipaux,
+          consulter les actualités locales et participer à la vie de votre commune.
+        </p>
+
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="demarches.html" class="btn-primary-custom">
+            <i class="fas fa-file-alt"></i> Vos démarches
+          </a>
+          <a href="territoire.html" class="btn-outline-custom">
+            <i class="fas fa-map-marked-alt"></i> Carte du territoire
+          </a>
+        </div>
+
+        <!-- Statistiques clés animées -->
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="13800" data-suffix="">0</div>
+            <div class="hero-stat-lbl">Habitants</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="12" data-suffix="">0</div>
+            <div class="hero-stat-lbl">Quartiers</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="28" data-suffix=" km²">0</div>
+            <div class="hero-stat-lbl">Superficie</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="2021" data-suffix="">0</div>
+            <div class="hero-stat-lbl">Conseil élu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Illustration droite -->
+      <div class="col-lg-6 fade-right delay-2 d-none d-lg-block">
+        <div class="rounded-4 overflow-hidden border border-white border-opacity-25"
+             style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px);padding:1.5rem;">
+          <h5 class="text-white mb-3"><i class="fas fa-bolt me-2 text-warning"></i>Accès rapide aux services</h5>
+          <div class="d-flex flex-column gap-2">
+            <a href="demarches.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-id-card" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">État civil & actes officiels</span>
+            </a>
+            <a href="demarches.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-hard-hat" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">Permis de construire</span>
+            </a>
+            <a href="actualites.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-newspaper" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">Actualités & événements</span>
+            </a>
+            <a href="projets.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-project-diagram" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">Projets de développement</span>
+            </a>
+            <a href="territoire.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-map" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">Carte interactive du territoire</span>
+            </a>
+            <a href="contact.html" class="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
+               style="background:rgba(255,255,255,.12);color:#fff;transition:.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,.2)'"
+               onmouseout="this.style.background='rgba(255,255,255,.12)'">
+              <i class="fas fa-phone" style="color:#c8960c;width:20px;"></i>
+              <span style="font-size:.88rem;">Contacter la mairie</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Vague décorative -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+      <path d="M0,30 C360,60 720,0 1080,40 L1440,20 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 2 — MESSAGE DU MAIRE
+════════════════════════════════════════════ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- Photo & badge -->
+      <div class="col-lg-4 text-center fade-left">
+        <div style="position:relative;display:inline-block;">
+          <div class="org-avatar mx-auto" style="width:140px;height:140px;font-size:3.2rem;">
+            SM
+          </div>
+          <span class="badge-custom badge-accent position-absolute"
+                style="bottom:-8px;right:0;font-size:.65rem;">
+            <i class="fas fa-star me-1"></i>Maire
+          </span>
+        </div>
+        <h4 class="mt-4 mb-1" style="font-family:var(--font-display);color:var(--primary);">
+          Seny Mandiang
+        </h4>
+        <p style="color:var(--muted);font-size:.85rem;">Maire de la Commune de Marsassoum</p>
+        <div class="d-flex justify-content-center gap-2 mt-2">
+          <span class="service-pill" style="font-size:.76rem;padding:.3rem .8rem;">
+            <i class="fas fa-calendar-check"></i> Élu en 2021
+          </span>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="col-lg-8 fade-right">
+        <p class="section-label">Message du Maire</p>
+        <h2 class="section-title">Chers citoyens de Marsassoum</h2>
+        <div class="section-divider"></div>
+        <p style="font-size:1rem;line-height:1.85;color:var(--text);margin-bottom:1rem;">
+          C'est avec une grande fierté que je vous accueille sur le portail officiel de notre commune.
+          Marsassoum, terre de rencontre au cœur de la Casamance, porte en elle une histoire riche
+          et un avenir prometteur.
+        </p>
+        <p style="font-size:1rem;line-height:1.85;color:var(--text);margin-bottom:1.5rem;">
+          Notre équipe municipale travaille chaque jour pour améliorer vos conditions de vie,
+          développer les infrastructures et garantir une gouvernance transparente au service
+          de tous les habitants. Ce portail est votre outil : n'hésitez pas à l'utiliser
+          pour effectuer vos démarches et rester informés.
+        </p>
+        <blockquote style="border-left:4px solid var(--accent);padding-left:1.2rem;
+                           font-style:italic;color:var(--muted);font-size:.95rem;">
+          « Ensemble, bâtissons une Marsassoum moderne, inclusive et prospère. »
+        </blockquote>
+        <a href="mairie.html" class="btn-cta mt-3">
+          <i class="fas fa-users"></i> Découvrir le Conseil Municipal
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 3 — SERVICES RAPIDES
+════════════════════════════════════════════ -->
+<section class="section-alt">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Nos services</p>
+        <h2 class="section-title">Accédez à vos services municipaux</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">Retrouvez tous les services de la mairie en quelques clics.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card service 1 -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-1">
+        <a href="demarches.html" class="card-modern d-block text-decoration-none p-4 h-100 text-center">
+          <div class="icon-box icon-primary mx-auto mb-3" style="width:60px;height:60px;font-size:1.5rem;border-radius:14px;">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <h6 style="font-weight:700;color:var(--primary);">État Civil</h6>
+          <p style="font-size:.82rem;color:var(--muted);">Naissances, mariages, décès, certificats</p>
+        </a>
+      </div>
+      <!-- Card service 2 -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-2">
+        <a href="demarches.html" class="card-modern d-block text-decoration-none p-4 h-100 text-center">
+          <div class="icon-box icon-secondary mx-auto mb-3" style="width:60px;height:60px;font-size:1.5rem;border-radius:14px;">
+            <i class="fas fa-home"></i>
+          </div>
+          <h6 style="font-weight:700;color:var(--primary);">Urbanisme</h6>
+          <p style="font-size:.82rem;color:var(--muted);">Permis de construire, lotissements</p>
+        </a>
+      </div>
+      <!-- Card service 3 -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-3">
+        <a href="territoire.html" class="card-modern d-block text-decoration-none p-4 h-100 text-center">
+          <div class="icon-box icon-accent mx-auto mb-3" style="width:60px;height:60px;font-size:1.5rem;border-radius:14px;">
+            <i class="fas fa-map"></i>
+          </div>
+          <h6 style="font-weight:700;color:var(--primary);">Territoire</h6>
+          <p style="font-size:.82rem;color:var(--muted);">Carte interactive, infrastructures</p>
+        </a>
+      </div>
+      <!-- Card service 4 -->
+      <div class="col-sm-6 col-lg-3 fade-up delay-4">
+        <a href="contact.html" class="card-modern d-block text-decoration-none p-4 h-100 text-center">
+          <div class="icon-box icon-purple mx-auto mb-3" style="width:60px;height:60px;font-size:1.5rem;border-radius:14px;">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h6 style="font-weight:700;color:var(--primary);">Contact</h6>
+          <p style="font-size:.82rem;color:var(--muted);">Nous joindre, formulaire en ligne</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 4 — ACTUALITÉS RÉCENTES (aperçu)
+════════════════════════════════════════════ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row mb-5 align-items-end fade-up">
+      <div class="col-lg-7">
+        <p class="section-label">Vie locale</p>
+        <h2 class="section-title">Dernières actualités</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="col-lg-5 text-lg-end">
+        <a href="actualites.html" class="btn-cta">
+          Toutes les actualités <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Actualité 1 -->
+      <div class="col-md-4 fade-up delay-1">
+        <div class="card-modern h-100">
+          <div style="height:180px;background:linear-gradient(135deg,var(--primary),var(--secondary));
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-road" style="font-size:3rem;color:rgba(255,255,255,.3);"></i>
+          </div>
+          <div class="p-3">
+            <span class="badge-custom badge-primary mb-2">Infrastructure</span>
+            <h6 style="font-weight:700;font-size:.92rem;">Réhabilitation de la route principale de Marsassoum</h6>
+            <p style="font-size:.8rem;color:var(--muted);">Les travaux de bitumage de 8 km ont démarré cette semaine.</p>
+            <span style="font-size:.76rem;color:var(--muted);">
+              <i class="far fa-calendar me-1"></i>10 Avril 2025
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Actualité 2 -->
+      <div class="col-md-4 fade-up delay-2">
+        <div class="card-modern h-100">
+          <div style="height:180px;background:linear-gradient(135deg,var(--accent),#d97706);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-graduation-cap" style="font-size:3rem;color:rgba(255,255,255,.3);"></i>
+          </div>
+          <div class="p-3">
+            <span class="badge-custom badge-secondary mb-2">Éducation</span>
+            <h6 style="font-weight:700;font-size:.92rem;">Inauguration de nouvelles salles de classe au CEM</h6>
+            <p style="font-size:.8rem;color:var(--muted);">6 nouvelles salles construites pour accueillir 240 élèves supplémentaires.</p>
+            <span style="font-size:.76rem;color:var(--muted);">
+              <i class="far fa-calendar me-1"></i>5 Avril 2025
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Actualité 3 -->
+      <div class="col-md-4 fade-up delay-3">
+        <div class="card-modern h-100">
+          <div style="height:180px;background:linear-gradient(135deg,#0891b2,#0e4f61);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-gavel" style="font-size:3rem;color:rgba(255,255,255,.3);"></i>
+          </div>
+          <div class="p-3">
+            <span class="badge-custom badge-info mb-2">Conseil Municipal</span>
+            <h6 style="font-weight:700;font-size:.92rem;">Session ordinaire du Conseil — Délibérations adoptées</h6>
+            <p style="font-size:.8rem;color:var(--muted);">Budget rectificatif 2025 et plan d'assainissement approuvés.</p>
+            <span style="font-size:.76rem;color:var(--muted);">
+              <i class="far fa-calendar me-1"></i>1 Avril 2025
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 5 — CHIFFRES CLÉS
+════════════════════════════════════════════ -->
+<section class="section-alt">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3 fade-up delay-1">
+        <div class="card-modern p-4">
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--primary);"
+               data-count="13800" data-suffix="">0</div>
+          <p style="font-size:.82rem;color:var(--muted);margin:0;">Habitants</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-2">
+        <div class="card-modern p-4">
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--secondary);"
+               data-count="4" data-suffix="">0</div>
+          <p style="font-size:.82rem;color:var(--muted);margin:0;">Établissements de santé</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-3">
+        <div class="card-modern p-4">
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--accent);"
+               data-count="4" data-suffix="">0</div>
+          <p style="font-size:.82rem;color:var(--muted);margin:0;">Écoles et CEM</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-4">
+        <div class="card-modern p-4">
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:#7c3aed;"
+               data-count="850" data-suffix="M FCFA">0</div>
+          <p style="font-size:.82rem;color:var(--muted);margin:0;">Budget communal</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER — identique sur toutes les pages
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 pb-4">
+
+      <!-- Identité -->
+      <div class="col-lg-4">
+        <div class="footer-brand">🏛️ Commune de Marsassoum</div>
+        <p class="footer-desc">
+          Portail officiel de la commune de Marsassoum, région de Sédhiou,
+          département de Marsassoum, Casamance — Sénégal.
+        </p>
+        <div>
+          <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="col-6 col-lg-2">
+        <p class="footer-heading">Navigation</p>
+        <a href="index.html"     class="footer-link">Accueil</a>
+        <a href="mairie.html"    class="footer-link">La Mairie</a>
+        <a href="demarches.html" class="footer-link">Démarches</a>
+        <a href="actualites.html"class="footer-link">Actualités</a>
+        <a href="territoire.html"class="footer-link">Territoire</a>
+        <a href="projets.html"   class="footer-link">Projets</a>
+        <a href="contact.html"   class="footer-link">Contact</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-6 col-lg-3">
+        <p class="footer-heading">Contact</p>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Hôtel de Ville, Marsassoum, Région de Sédhiou</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+221 33 XXX XX XX</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>contact@mairie-marsassoum.sn</span>
+        </div>
+      </div>
+
+      <!-- Horaires -->
+      <div class="col-lg-3">
+        <p class="footer-heading">Horaires d'ouverture</p>
+        <div class="footer-hours">
+          <div><strong>Lundi – Vendredi</strong> : 8h00 – 17h00</div>
+          <div><strong>Samedi</strong> : 8h00 – 12h00</div>
+          <div style="color:rgba(255,255,255,.45);">Dimanche & jours fériés : Fermé</div>
+        </div>
+        <div class="mt-3 p-2 rounded" style="background:rgba(200,150,12,.15);border:1px solid rgba(200,150,12,.3);">
+          <span style="font-size:.78rem;color:var(--accent);">
+            <i class="fas fa-phone me-1"></i> <strong>Urgences :</strong> +221 33 XXX XX XX
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bas du footer -->
+    <div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span class="footer-bottom-text">© 2025 Commune de Marsassoum — Tous droits réservés</span>
+        <div class="d-flex gap-3">
+          <a href="#" class="footer-link" style="display:inline;">Mentions légales</a>
+          <a href="#" class="footer-link" style="display:inline;">Confidentialité</a>
+          <a href="#" class="footer-link" style="display:inline;">Accessibilité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bouton retour en haut -->
+<button id="backToTop" title="Retour en haut">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script principal du projet -->
+<script src="js/script.js"></script>
+</body>
+</html>

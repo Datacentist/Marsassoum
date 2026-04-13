@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Organisation de la Mairie de Marsassoum — Conseil municipal, élus et services." />
+  <title>La Mairie — Commune de Marsassoum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-logo">M</div>
+      <div>
+        <div class="brand-text-main">Marsassoum</div>
+        <div class="brand-text-sub">Portail Officiel</div>
+      </div>
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="mairie.html">Mairie</a></li>
+        <li class="nav-item"><a class="nav-link" href="demarches.html">Démarches</a></li>
+        <li class="nav-item"><a class="nav-link" href="actualites.html">Actualités</a></li>
+        <li class="nav-item"><a class="nav-link" href="territoire.html">Territoire</a></li>
+        <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkModeToggle" class="ms-3" title="Basculer le mode sombre">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ EN-TÊTE DE PAGE ══ -->
+<div class="page-header">
+  <div class="container position-relative">
+    <div class="page-header-icon"><i class="fas fa-landmark"></i></div>
+    <h1>La Mairie de Marsassoum</h1>
+    <p>Organisation municipale, conseil élu et services au service des citoyens.</p>
+    <nav class="breadcrumb-custom">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span class="current">Mairie</span>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ══ SECTION 1 — CONSEIL MUNICIPAL ══ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-7">
+        <p class="section-label">Gouvernance</p>
+        <h2 class="section-title">Le Conseil Municipal</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">
+          Le conseil municipal de Marsassoum est composé d'élus représentant
+          les 12 quartiers de la commune, élus pour un mandat de 5 ans.
+        </p>
+      </div>
+    </div>
+
+    <!-- Élus principaux -->
+    <div class="row g-4 mb-5">
+
+      <!-- Maire -->
+      <div class="col-md-4 fade-up delay-1">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="org-avatar" style="width:90px;height:90px;font-size:2.2rem;">SM</div>
+          <h5 style="font-family:var(--font-display);color:var(--primary);margin-bottom:.25rem;">
+            Seny Mandiang
+          </h5>
+          <span class="badge-custom badge-primary mb-3">Maire de la Commune</span>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Élu en 2021, M. Seny Mandiang pilote le développement territorial,
+            la gouvernance et la mise en œuvre des politiques communales.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <span class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-phone"></i> +221 33 XXX XX XX
+            </span>
+            <a href="contact.html" class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-envelope"></i> Contacter
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1ère Adjointe -->
+      <div class="col-md-4 fade-up delay-2">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="org-avatar"
+               style="width:90px;height:90px;font-size:2.2rem;background:linear-gradient(135deg,var(--secondary),#48c774);">
+            KD
+          </div>
+          <h5 style="font-family:var(--font-display);color:var(--primary);margin-bottom:.25rem;">
+            Khadidiatou Dieng
+          </h5>
+          <span class="badge-custom badge-secondary mb-3">1ère Adjointe au Maire</span>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Responsable de l'urbanisme, des affaires foncières, de la planification
+            territoriale et du suivi des projets d'infrastructure communale.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <span class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-map"></i> Urbanisme & Cadastre
+            </span>
+            <a href="contact.html" class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-envelope"></i> Contacter
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2ème Adjoint -->
+      <div class="col-md-4 fade-up delay-3">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="org-avatar"
+               style="width:90px;height:90px;font-size:2.2rem;background:linear-gradient(135deg,var(--accent),#d97706);">
+            BD
+          </div>
+          <h5 style="font-family:var(--font-display);color:var(--primary);margin-bottom:.25rem;">
+            Boubacar Dabo
+          </h5>
+          <span class="badge-custom badge-accent mb-3">2ème Adjoint au Maire</span>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            En charge des finances municipales, du budget communal,
+            de la fiscalité locale et du suivi des marchés publics.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <span class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-coins"></i> Finances & Budget
+            </span>
+            <a href="contact.html" class="service-pill justify-content-center" style="font-size:.76rem;">
+              <i class="fas fa-envelope"></i> Contacter
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autres conseillers (tableau simple) -->
+    <div class="row fade-up">
+      <div class="col-12">
+        <div class="card-modern p-4">
+          <h5 class="mb-4" style="color:var(--primary);">
+            <i class="fas fa-users me-2"></i>Conseillers Municipaux
+          </h5>
+          <div class="table-responsive">
+            <table class="table table-hover" style="font-size:.87rem;">
+              <thead style="background:var(--primary-light);">
+                <tr>
+                  <th style="color:var(--primary);font-weight:600;border:none;padding:.9rem 1rem;">Nom & Prénom</th>
+                  <th style="color:var(--primary);font-weight:600;border:none;">Quartier représenté</th>
+                  <th style="color:var(--primary);font-weight:600;border:none;">Commission</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-3">Mamadou Baldé</td><td>Centre-Ville</td><td><span class="badge-custom badge-primary" style="font-size:.65rem;">Éducation</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3">Fatoumata Camara</td><td>Quartier Peul</td><td><span class="badge-custom badge-secondary" style="font-size:.65rem;">Santé</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3">Ibrahima Diallo</td><td>Quartier Mandingue</td><td><span class="badge-custom badge-accent" style="font-size:.65rem;">Agriculture</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3">Aminata Kouyaté</td><td>Quartier Balante</td><td><span class="badge-custom badge-info" style="font-size:.65rem;">Jeunesse</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3">Ousmane Faty</td><td>Quartier Nord</td><td><span class="badge-custom badge-success" style="font-size:.65rem;">Infrastructure</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3">Mariama Sagna</td><td>Quartier Sud</td><td><span class="badge-custom badge-warning" style="font-size:.65rem;">Femme & Famille</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 2 — SERVICES MUNICIPAUX ══ -->
+<section class="section-alt">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Organisation</p>
+        <h2 class="section-title">Services de la Mairie</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">Chaque service est dédié à une mission précise pour mieux vous servir.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-primary mb-3"><i class="fas fa-id-card"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Service de l'État Civil</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Enregistrement des naissances, mariages et décès.
+            Délivrance d'extraits et copies d'actes officiels.
+          </p>
+          <a href="demarches.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Voir les formulaires
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-secondary mb-3"><i class="fas fa-hard-hat"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Service de l'Urbanisme</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Instruction des permis de construire, gestion du foncier communal
+            et suivi du Plan d'Occupation des Sols.
+          </p>
+          <a href="demarches.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Voir les formulaires
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-accent mb-3"><i class="fas fa-coins"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Service Financier</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Gestion du budget communal, recouvrement des taxes locales
+            et suivi de l'exécution budgétaire.
+          </p>
+          <a href="contact.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Nous contacter
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-purple mb-3"><i class="fas fa-leaf"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Environnement & Assainissement</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Collecte des ordures ménagères, entretien des espaces verts
+            et gestion des eaux usées.
+          </p>
+          <a href="contact.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Signaler un problème
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-primary mb-3"><i class="fas fa-graduation-cap"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Action Sociale & Éducation</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Soutien aux familles vulnérables, suivi de la scolarisation
+            et appui aux activités socio-éducatives.
+          </p>
+          <a href="contact.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Nous contacter
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="card-modern p-4 h-100">
+          <div class="icon-box icon-secondary mb-3"><i class="fas fa-tractor"></i></div>
+          <h6 style="font-weight:700;color:var(--primary);">Agriculture & Développement Rural</h6>
+          <p style="font-size:.83rem;color:var(--muted);line-height:1.7;">
+            Appui aux producteurs locaux, gestion des terres agricoles
+            communales et organisation des marchés hebdomadaires.
+          </p>
+          <a href="contact.html" class="service-pill mt-2" style="font-size:.76rem;">
+            <i class="fas fa-arrow-right"></i> Nous contacter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 3 — HORAIRES & INFOS PRATIQUES ══ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row g-4 align-items-start">
+
+      <div class="col-lg-6 fade-left">
+        <p class="section-label">Infos pratiques</p>
+        <h2 class="section-title">Nous rendre visite</h2>
+        <div class="section-divider"></div>
+        <div class="card-modern p-4">
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex gap-3 align-items-start">
+              <div class="icon-box icon-primary flex-shrink-0"><i class="fas fa-clock"></i></div>
+              <div>
+                <strong style="color:var(--primary);font-size:.9rem;">Horaires d'ouverture</strong>
+                <div style="font-size:.83rem;color:var(--muted);margin-top:.3rem;line-height:1.9;">
+                  Lun – Ven : <strong>8h00 à 17h00</strong><br>
+                  Samedi : <strong>8h00 à 12h00</strong><br>
+                  Dimanche & jours fériés : <span style="color:#dc2626;">Fermé</span>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex gap-3 align-items-start">
+              <div class="icon-box icon-secondary flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <strong style="color:var(--primary);font-size:.9rem;">Adresse</strong>
+                <div style="font-size:.83rem;color:var(--muted);margin-top:.3rem;">
+                  Hôtel de Ville, Place de l'Indépendance<br>
+                  Marsassoum — Région de Sédhiou, Sénégal
+                </div>
+              </div>
+            </div>
+            <div class="d-flex gap-3 align-items-start">
+              <div class="icon-box icon-accent flex-shrink-0"><i class="fas fa-phone"></i></div>
+              <div>
+                <strong style="color:var(--primary);font-size:.9rem;">Téléphone</strong>
+                <div style="font-size:.83rem;color:var(--muted);margin-top:.3rem;">
+                  Standard : +221 33 XXX XX XX<br>
+                  Urgences : +221 77 XXX XX XX
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 fade-right">
+        <p class="section-label">Documents officiels</p>
+        <h2 class="section-title">Transparence & Gouvernance</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc mb-4">
+          Consultez les délibérations du conseil municipal,
+          les budgets annuels et les rapports d'activité.
+        </p>
+        <div class="d-flex flex-column gap-2">
+          <div class="demarche-row">
+            <div class="icon-box icon-primary flex-shrink-0"><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div class="demarche-name">Budget communal 2025</div>
+              <div class="demarche-desc">Approuvé en session du 5 janvier 2025</div>
+            </div>
+            <a href="#" class="btn btn-sm demarche-btn"
+               style="background:var(--primary-light);color:var(--primary);border-radius:6px;font-size:.76rem;">
+              <i class="fas fa-download me-1"></i>PDF
+            </a>
+          </div>
+          <div class="demarche-row">
+            <div class="icon-box icon-secondary flex-shrink-0"><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div class="demarche-name">Délibérations Q1 2025</div>
+              <div class="demarche-desc">Session ordinaire — mars 2025</div>
+            </div>
+            <a href="#" class="btn btn-sm demarche-btn"
+               style="background:var(--primary-light);color:var(--primary);border-radius:6px;font-size:.76rem;">
+              <i class="fas fa-download me-1"></i>PDF
+            </a>
+          </div>
+          <div class="demarche-row">
+            <div class="icon-box icon-accent flex-shrink-0"><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div class="demarche-name">Rapport d'activités 2024</div>
+              <div class="demarche-desc">Bilan annuel du Conseil Municipal</div>
+            </div>
+            <a href="#" class="btn btn-sm demarche-btn"
+               style="background:var(--primary-light);color:var(--primary);border-radius:6px;font-size:.76rem;">
+              <i class="fas fa-download me-1"></i>PDF
+            </a>
+          </div>
+          <div class="demarche-row">
+            <div class="icon-box icon-purple flex-shrink-0"><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div class="demarche-name">Plan de Développement Communal 2021–2026</div>
+              <div class="demarche-desc">Feuille de route stratégique de la commune</div>
+            </div>
+            <a href="#" class="btn btn-sm demarche-btn"
+               style="background:var(--primary-light);color:var(--primary);border-radius:6px;font-size:.76rem;">
+              <i class="fas fa-download me-1"></i>PDF
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-4">
+        <div class="footer-brand">🏛️ Commune de Marsassoum</div>
+        <p class="footer-desc">Portail officiel de la commune de Marsassoum, région de Sédhiou, Sénégal.</p>
+        <div>
+          <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <p class="footer-heading">Navigation</p>
+        <a href="index.html"     class="footer-link">Accueil</a>
+        <a href="mairie.html"    class="footer-link">La Mairie</a>
+        <a href="demarches.html" class="footer-link">Démarches</a>
+        <a href="actualites.html"class="footer-link">Actualités</a>
+        <a href="territoire.html"class="footer-link">Territoire</a>
+        <a href="projets.html"   class="footer-link">Projets</a>
+        <a href="contact.html"   class="footer-link">Contact</a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <p class="footer-heading">Contact</p>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Hôtel de Ville, Marsassoum</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+221 33 XXX XX XX</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>contact@mairie-marsassoum.sn</span></div>
+      </div>
+      <div class="col-lg-3">
+        <p class="footer-heading">Horaires</p>
+        <div class="footer-hours">
+          <div><strong>Lun – Ven</strong> : 8h00 – 17h00</div>
+          <div><strong>Samedi</strong> : 8h00 – 12h00</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span class="footer-bottom-text">© 2025 Commune de Marsassoum — Tous droits réservés</span>
+        <div class="d-flex gap-3">
+          <a href="#" class="footer-link" style="display:inline;">Mentions légales</a>
+          <a href="#" class="footer-link" style="display:inline;">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" title="Retour en haut"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

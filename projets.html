@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projets de développement de la Commune de Marsassoum — Vision 2026." />
+  <title>Projets — Commune de Marsassoum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-logo">M</div>
+      <div><div class="brand-text-main">Marsassoum</div><div class="brand-text-sub">Portail Officiel</div></div>
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="mairie.html">Mairie</a></li>
+        <li class="nav-item"><a class="nav-link" href="demarches.html">Démarches</a></li>
+        <li class="nav-item"><a class="nav-link" href="actualites.html">Actualités</a></li>
+        <li class="nav-item"><a class="nav-link" href="territoire.html">Territoire</a></li>
+        <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkModeToggle" class="ms-3" title="Basculer le mode sombre"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ EN-TÊTE ══ -->
+<div class="page-header">
+  <div class="container position-relative">
+    <div class="page-header-icon"><i class="fas fa-project-diagram"></i></div>
+    <h1>Projets de Développement</h1>
+    <p>Les chantiers structurants qui bâtissent le Marsassoum de demain — Vision 2021–2026.</p>
+    <nav class="breadcrumb-custom">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span class="current">Projets</span>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ══ FILTRES PROJETS ══ -->
+<div style="background:var(--primary-light);padding:1.2rem 0;border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-sm proj-filter active"
+              style="border-radius:50px;border:1.5px solid var(--primary);background:var(--primary);color:#fff;font-size:.8rem;"
+              data-filter="all" onclick="filterProjects(this, 'all')">
+        Tous les projets
+      </button>
+      <button class="btn btn-sm proj-filter"
+              style="border-radius:50px;border:1.5px solid var(--border);background:transparent;font-size:.8rem;"
+              data-filter="encours" onclick="filterProjects(this, 'encours')">
+        En cours
+      </button>
+      <button class="btn btn-sm proj-filter"
+              style="border-radius:50px;border:1.5px solid var(--border);background:transparent;font-size:.8rem;"
+              data-filter="planifie" onclick="filterProjects(this, 'planifie')">
+        Planifié
+      </button>
+      <button class="btn btn-sm proj-filter"
+              style="border-radius:50px;border:1.5px solid var(--border);background:transparent;font-size:.8rem;"
+              data-filter="termine" onclick="filterProjects(this, 'termine')">
+        Terminé
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ LISTE DES PROJETS ══ -->
+<section class="section-main">
+  <div class="container">
+
+    <div class="row g-4" id="projetsGrid">
+
+      <!-- ── Projet 1 (En cours) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1 project-item" data-status="encours">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,var(--primary),var(--secondary));
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-road" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom badge-success">En cours</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Bitumage de la route principale de Marsassoum
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              Réhabilitation et bitumage de 8 km de route traversant le centre-ville.
+              Améliore la mobilité et les échanges économiques de la commune.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong>62%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="62"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>450 M FCFA</span>
+              <span><i class="fas fa-calendar me-1"></i>Fin : Déc. 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projet 2 (En cours) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2 project-item" data-status="encours">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,#0891b2,#0e4f61);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-water" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom badge-success">En cours</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Extension du réseau d'eau potable
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              Pose de 14 km de conduites pour alimenter 3 quartiers non desservis.
+              Comprend la construction de 3 forages solaires supplémentaires.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong>38%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="38"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>320 M FCFA</span>
+              <span><i class="fas fa-calendar me-1"></i>Fin : Juin 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projet 3 (Planifié) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3 project-item" data-status="planifie">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,#7c3aed,#4c1d95);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-solar-panel" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom badge-warning">Planifié</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Électrification solaire des quartiers périphériques
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              Installation de 180 panneaux solaires pour alimenter 1 200 foyers
+              des zones rurales et périphériques en énergie renouvelable.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong>8%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="8" style="background:linear-gradient(90deg,#7c3aed,#a855f7);"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>580 M FCFA</span>
+              <span><i class="fas fa-calendar me-1"></i>Fin : Déc. 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projet 4 (Terminé) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1 project-item" data-status="termine">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,var(--secondary),#48c774);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-graduation-cap" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom" style="background:#16a34a;color:#fff;">Terminé ✓</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Construction de 6 salles de classe au CEM
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              6 nouvelles salles de classe répondant aux normes OCDE, équipées
+              de mobilier et d'équipements pédagogiques modernes. 240 places créées.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong style="color:#16a34a;">100%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="100" style="background:linear-gradient(90deg,#16a34a,#22c55e);"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>95 M FCFA</span>
+              <span style="color:#16a34a;"><i class="fas fa-check me-1"></i>Mars 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projet 5 (Planifié) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2 project-item" data-status="planifie">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,var(--accent),#d97706);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-laptop-code" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom badge-warning">Planifié</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Centre multimédia & numérique de Marsassoum
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              Construction d'un espace numérique communal avec 40 postes informatiques,
+              connexion haut débit et formation aux outils numériques.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong>15%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="15" style="background:linear-gradient(90deg,var(--accent),#f59e0b);"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>180 M FCFA</span>
+              <span><i class="fas fa-calendar me-1"></i>Fin : Sept. 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projet 6 (En cours) ── -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3 project-item" data-status="encours">
+        <div class="card-modern h-100" style="position:relative;overflow:hidden;">
+          <div style="height:190px;background:linear-gradient(135deg,#dc2626,#b91c1c);
+                      display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-heartbeat" style="font-size:4.5rem;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span style="position:absolute;top:1rem;left:1rem;">
+            <span class="badge-custom badge-success">En cours</span>
+          </span>
+          <div class="p-4">
+            <h5 style="font-family:var(--font-display);color:var(--primary);font-size:1rem;margin-bottom:.75rem;">
+              Rénovation et équipement du Poste de Santé
+            </h5>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+              Réhabilitation complète du bâtiment principal, extension de la maternité
+              et acquisition de nouveaux équipements médicaux.
+            </p>
+            <div class="d-flex justify-content-between mb-1" style="font-size:.78rem;">
+              <span style="color:var(--muted);">Avancement</span>
+              <strong>55%</strong>
+            </div>
+            <div class="progress-modern mb-3">
+              <div class="progress-fill" data-width="55" style="background:linear-gradient(90deg,#dc2626,#ef4444);"></div>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:.76rem;color:var(--muted);">
+              <span><i class="fas fa-coins me-1"></i>120 M FCFA</span>
+              <span><i class="fas fa-calendar me-1"></i>Fin : Oct. 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- fin projetsGrid -->
+
+  </div>
+</section>
+
+
+<!-- ══ SECTION — PARTENAIRES ══ -->
+<section class="section-alt">
+  <div class="container">
+    <div class="row mb-4 fade-up">
+      <div class="col-12 text-center">
+        <p class="section-label">Financement</p>
+        <h2 class="section-title">Nos partenaires au développement</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-6 col-md-3 fade-up delay-1">
+        <div class="card-modern p-4 text-center">
+          <i class="fas fa-flag" style="font-size:2rem;color:var(--primary);margin-bottom:.8rem;"></i>
+          <div style="font-weight:700;font-size:.9rem;color:var(--primary);">État du Sénégal</div>
+          <div style="font-size:.76rem;color:var(--muted);">ANSD — PUDC</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-2">
+        <div class="card-modern p-4 text-center">
+          <i class="fas fa-globe-africa" style="font-size:2rem;color:var(--secondary);margin-bottom:.8rem;"></i>
+          <div style="font-weight:700;font-size:.9rem;color:var(--primary);">Union Africaine</div>
+          <div style="font-size:.76rem;color:var(--muted);">Fonds développement local</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-3">
+        <div class="card-modern p-4 text-center">
+          <i class="fas fa-hands-helping" style="font-size:2rem;color:var(--accent);margin-bottom:.8rem;"></i>
+          <div style="font-weight:700;font-size:.9rem;color:var(--primary);">ONG Partenaires</div>
+          <div style="font-size:.76rem;color:var(--muted);">Coopération internationale</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up delay-4">
+        <div class="card-modern p-4 text-center">
+          <i class="fas fa-city" style="font-size:2rem;color:#7c3aed;margin-bottom:.8rem;"></i>
+          <div style="font-weight:700;font-size:.9rem;color:var(--primary);">Budget Communal</div>
+          <div style="font-size:.76rem;color:var(--muted);">Ressources propres</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-4">
+        <div class="footer-brand">🏛️ Commune de Marsassoum</div>
+        <p class="footer-desc">Portail officiel de la commune de Marsassoum, région de Sédhiou, Sénégal.</p>
+        <div>
+          <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <p class="footer-heading">Navigation</p>
+        <a href="index.html" class="footer-link">Accueil</a>
+        <a href="mairie.html" class="footer-link">La Mairie</a>
+        <a href="demarches.html" class="footer-link">Démarches</a>
+        <a href="actualites.html" class="footer-link">Actualités</a>
+        <a href="territoire.html" class="footer-link">Territoire</a>
+        <a href="projets.html" class="footer-link">Projets</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <p class="footer-heading">Contact</p>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Hôtel de Ville, Marsassoum</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+221 33 XXX XX XX</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>contact@mairie-marsassoum.sn</span></div>
+      </div>
+      <div class="col-lg-3">
+        <p class="footer-heading">Horaires</p>
+        <div class="footer-hours">
+          <div><strong>Lun – Ven</strong> : 8h00 – 17h00</div>
+          <div><strong>Samedi</strong> : 8h00 – 12h00</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between gap-2">
+        <span class="footer-bottom-text">© 2025 Commune de Marsassoum</span>
+        <a href="#" class="footer-link" style="display:inline;">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" title="Retour en haut"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+  /* ── Filtrage des projets par statut ── */
+  function filterProjects(btn, status) {
+    /* Reset tous les boutons */
+    document.querySelectorAll('.proj-filter').forEach(b => {
+      b.style.background = 'transparent';
+      b.style.color = '';
+      b.style.borderColor = 'var(--border)';
+    });
+    /* Active le bouton cliqué */
+    btn.style.background = 'var(--primary)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--primary)';
+
+    /* Filtre les cards */
+    document.querySelectorAll('.project-item').forEach(item => {
+      if (status === 'all' || item.dataset.status === status) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  /* ── Animation des barres de progression ── */
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.project-item').forEach(card => observer.observe(card));
+  });
+</script>
+</body>
+</html>

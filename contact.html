@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contactez la Mairie de Marsassoum — Formulaire, téléphone, adresse et localisation." />
+  <title>Contact — Commune de Marsassoum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Leaflet CSS — mini-carte de localisation -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Carte de localisation mairie */
+    #mapContact {
+      height: 280px;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Indicateur statut formulaire */
+    #formSuccess {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--secondary-light);
+      color: var(--secondary);
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    /* Carte info-contact avec hover */
+    .contact-info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      margin-bottom: .9rem;
+      transition: var(--transition);
+    }
+
+    .contact-info-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+
+    [data-theme="dark"] .contact-info-card {
+      background: #1e2a36;
+      border-color: #2a3a4a;
+    }
+
+    .contact-info-title {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: .2rem;
+    }
+
+    .contact-info-text {
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* FAQ accordion */
+    .faq-item {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: .6rem;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover { border-color: var(--primary); }
+
+    .faq-question {
+      width: 100%;
+      background: var(--white);
+      border: none;
+      padding: 1rem 1.2rem;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    [data-theme="dark"] .faq-question { background: #1e2a36; }
+
+    .faq-question:hover { color: var(--primary); }
+
+    .faq-answer {
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.7;
+      transition: max-height .35s ease, padding .3s ease;
+      background: var(--white);
+    }
+
+    [data-theme="dark"] .faq-answer { background: #1e2a36; }
+
+    .faq-answer.open {
+      max-height: 200px;
+      padding: 0 1.2rem 1rem;
+    }
+
+    .faq-icon { transition: transform .3s; font-size: .8rem; }
+    .faq-icon.rotated { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR — identique sur toutes les pages
+══════════════════════════════════════════ -->
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <!--
+        LOGO :
+        Remplacez ce bloc par :
+        <img src="assets/images/logo.png" alt="Logo Marsassoum" class="brand-logo" />
+      -->
+      <div class="brand-logo">M</div>
+      <div>
+        <div class="brand-text-main">Marsassoum</div>
+        <div class="brand-text-sub">Portail Officiel</div>
+      </div>
+    </a>
+
+    <!-- Bouton mobile -->
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="mairie.html">Mairie</a></li>
+        <li class="nav-item"><a class="nav-link" href="demarches.html">Démarches</a></li>
+        <li class="nav-item"><a class="nav-link" href="actualites.html">Actualités</a></li>
+        <li class="nav-item"><a class="nav-link" href="territoire.html">Territoire</a></li>
+        <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkModeToggle" class="ms-3" title="Basculer le mode sombre">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     EN-TÊTE DE PAGE
+══════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="container position-relative">
+    <div class="page-header-icon"><i class="fas fa-envelope-open-text"></i></div>
+    <h1>Nous Contacter</h1>
+    <p>Notre équipe est à votre disposition du lundi au vendredi, de 8h à 17h.</p>
+    <nav class="breadcrumb-custom">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span class="current">Contact</span>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — INFORMATIONS DE CONTACT
+══════════════════════════════════════════ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- ── Colonne gauche : infos + carte ── -->
+      <div class="col-lg-5 fade-left">
+
+        <!-- Titre -->
+        <p class="section-label">Coordonnées</p>
+        <h2 class="section-title">Joignez la Mairie</h2>
+        <div class="section-divider"></div>
+
+        <!-- Infos de contact -->
+        <div class="contact-info-card">
+          <div class="icon-box icon-primary flex-shrink-0">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="contact-info-title">Adresse</div>
+            <div class="contact-info-text">
+              Hôtel de Ville, Place de l'Indépendance<br>
+              Marsassoum — Région de Sédhiou<br>
+              Sénégal
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-box icon-secondary flex-shrink-0">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <div class="contact-info-title">Téléphone</div>
+            <div class="contact-info-text">
+              Standard : <strong>+221 33 XXX XX XX</strong><br>
+              Mobile/WhatsApp : <strong>+221 77 XXX XX XX</strong><br>
+              <span style="font-size:.76rem;color:#dc2626;">
+                <i class="fas fa-clock me-1"></i>Urgences : +221 77 XXX XX XX (24h/24)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-box icon-accent flex-shrink-0">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <div class="contact-info-title">Adresses email</div>
+            <div class="contact-info-text">
+              Général : <strong>contact@mairie-marsassoum.sn</strong><br>
+              Maire : <strong>maire@mairie-marsassoum.sn</strong><br>
+              État Civil : <strong>etatcivil@mairie-marsassoum.sn</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-box icon-primary flex-shrink-0">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <div class="contact-info-title">Horaires d'ouverture</div>
+            <div class="contact-info-text">
+              Lundi – Vendredi : <strong>8h00 à 17h00</strong><br>
+              Samedi : <strong>8h00 à 12h00</strong><br>
+              <span style="color:#dc2626;">Dimanche & jours fériés : Fermé</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div class="mt-3">
+          <p style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.7rem;">
+            Suivez-nous sur les réseaux
+          </p>
+          <div class="d-flex gap-2">
+            <a href="#" class="footer-social"
+               style="background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="footer-social"
+               style="background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="footer-social"
+               style="background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="footer-social"
+               style="background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Carte de localisation mini (Leaflet) -->
+        <div class="mt-4">
+          <p style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.6rem;">
+            <i class="fas fa-map me-1" style="color:var(--primary);"></i>
+            Localisation de la Mairie
+          </p>
+          <div id="mapContact"></div>
+        </div>
+
+      </div><!-- fin col-lg-5 -->
+
+
+      <!-- ── Colonne droite : formulaire de contact ── -->
+      <div class="col-lg-7 fade-right">
+        <div class="card-modern p-4 p-lg-5">
+
+          <h4 style="font-family:var(--font-display);color:var(--primary);margin-bottom:.3rem;">
+            Envoyez-nous un message
+          </h4>
+          <p style="font-size:.84rem;color:var(--muted);margin-bottom:1.8rem;">
+            Nous vous répondrons dans les <strong>48 heures ouvrées</strong>.
+            Pour les urgences, appelez directement le standard.
+          </p>
+
+          <!-- ── Formulaire ── -->
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+
+              <!-- Prénom & Nom -->
+              <div class="col-md-6">
+                <div class="form-field">
+                  <label for="nomComplet">Prénom & Nom <span style="color:#dc2626;">*</span></label>
+                  <input type="text" id="nomComplet" class="form-control-custom"
+                         placeholder="Ex : Amadou Diallo" required />
+                  <div class="form-error">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-6">
+                <div class="form-field">
+                  <label for="email">Adresse email <span style="color:#dc2626;">*</span></label>
+                  <input type="email" id="email" class="form-control-custom"
+                         placeholder="votre@email.com" required />
+                  <div class="form-error">Veuillez saisir un email valide.</div>
+                </div>
+              </div>
+
+              <!-- Téléphone -->
+              <div class="col-md-6">
+                <div class="form-field">
+                  <label for="telephone">Téléphone</label>
+                  <input type="tel" id="telephone" class="form-control-custom"
+                         placeholder="+221 XX XXX XX XX" />
+                </div>
+              </div>
+
+              <!-- Service -->
+              <div class="col-md-6">
+                <div class="form-field">
+                  <label for="service">Service concerné <span style="color:#dc2626;">*</span></label>
+                  <select id="service" class="form-control-custom" required>
+                    <option value="">— Sélectionner un service —</option>
+                    <option value="etatcivil">État Civil</option>
+                    <option value="urbanisme">Urbanisme & Foncier</option>
+                    <option value="finances">Finances & Taxes</option>
+                    <option value="sante">Santé & Social</option>
+                    <option value="education">Éducation</option>
+                    <option value="infrastructure">Infrastructure & Voirie</option>
+                    <option value="maire">Bureau du Maire</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                  <div class="form-error">Veuillez sélectionner un service.</div>
+                </div>
+              </div>
+
+              <!-- Objet -->
+              <div class="col-12">
+                <div class="form-field">
+                  <label for="objet">Objet <span style="color:#dc2626;">*</span></label>
+                  <input type="text" id="objet" class="form-control-custom"
+                         placeholder="Résumez votre demande en quelques mots" required />
+                  <div class="form-error">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="col-12">
+                <div class="form-field">
+                  <label for="message">
+                    Message <span style="color:#dc2626;">*</span>
+                    <span id="charCount" style="font-weight:400;color:var(--muted);font-size:.76rem;margin-left:.5rem;">
+                      0 / 800 caractères
+                    </span>
+                  </label>
+                  <textarea id="message" class="form-control-custom" rows="6"
+                            maxlength="800"
+                            placeholder="Décrivez votre demande en détail. Plus vous êtes précis, plus nous pourrons vous aider efficacement."
+                            required
+                            oninput="document.getElementById('charCount').textContent = this.value.length + ' / 800 caractères'"></textarea>
+                  <div class="form-error">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+              <!-- Pièce jointe -->
+              <div class="col-12">
+                <div class="form-field">
+                  <label for="fichier">
+                    Pièce jointe
+                    <span style="font-weight:400;color:var(--muted);font-size:.76rem;">(PDF ou image, max 5 Mo)</span>
+                  </label>
+                  <input type="file" id="fichier" class="form-control-custom"
+                         accept=".pdf,.jpg,.jpeg,.png"
+                         style="cursor:pointer;padding:.5rem 1rem;" />
+                </div>
+              </div>
+
+              <!-- Consentement RGPD -->
+              <div class="col-12">
+                <label class="d-flex align-items-start gap-2" style="cursor:pointer;">
+                  <input type="checkbox" id="rgpd" required
+                         style="margin-top:3px;accent-color:var(--primary);flex-shrink:0;" />
+                  <span style="font-size:.8rem;color:var(--muted);">
+                    J'accepte que mes données personnelles soient utilisées uniquement
+                    pour traiter ma demande, conformément à la politique de confidentialité
+                    de la Commune de Marsassoum. <span style="color:#dc2626;">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <!-- Bouton soumettre -->
+              <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                <button type="submit" class="btn-cta">
+                  <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                </button>
+                <span style="font-size:.75rem;color:var(--muted);">
+                  * Champs obligatoires
+                </span>
+              </div>
+
+            </div>
+          </form>
+
+          <!-- ── Message de confirmation (caché par défaut) ── -->
+          <div id="formSuccess">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h5 style="font-family:var(--font-display);color:var(--secondary);">
+              Message envoyé avec succès !
+            </h5>
+            <p style="color:var(--muted);font-size:.9rem;max-width:400px;margin:.5rem auto 0;">
+              Merci pour votre message. Notre équipe vous contactera dans les
+              <strong>48 heures ouvrées</strong>. Vous pouvez également nous appeler
+              au <strong>+221 33 XXX XX XX</strong> pour un traitement immédiat.
+            </p>
+            <a href="index.html" class="btn-cta mt-3" style="font-size:.85rem;">
+              <i class="fas fa-home me-1"></i> Retour à l'accueil
+            </a>
+          </div>
+
+        </div>
+      </div><!-- fin col-lg-7 -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — FAQ (Foire aux questions)
+══════════════════════════════════════════ -->
+<section class="section-alt">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Questions fréquentes</p>
+        <h2 class="section-title">FAQ — Aide & Support</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">
+          Retrouvez ici les réponses aux questions les plus souvent posées à nos services.
+        </p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9 fade-up delay-1">
+
+        <!-- Question 1 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Comment obtenir un acte de naissance ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Rendez-vous au service État Civil de la Mairie, muni d'une pièce d'identité valide.
+            L'acte est délivré sur place en quelques minutes. Pour une demande à distance,
+            vous pouvez envoyer un courrier avec copie de votre pièce d'identité et une enveloppe
+            timbrée pour le retour.
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quel est le délai pour obtenir un permis de construire ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Le délai réglementaire est de <strong>30 jours ouvrés</strong> à compter de la date
+            de dépôt du dossier complet. Un dossier incomplet ne sera pas instruit. Consultez
+            la liste des pièces requises dans la section Démarches.
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Comment signaler un problème de voirie ou d'assainissement ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Utilisez le formulaire de contact de cette page en sélectionnant le service
+            "Infrastructure & Voirie". Vous pouvez également appeler le standard municipal
+            du lundi au vendredi de 8h à 17h. Un agent prendra en charge votre signalement
+            sous 72 heures.
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quand se tient le conseil municipal ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Le conseil municipal se réunit en <strong>session ordinaire</strong> quatre fois
+            par an (janvier, avril, juillet, octobre). Des sessions extraordinaires peuvent
+            être convoquées selon les besoins. Les séances sont ouvertes au public. Consultez
+            la section Actualités pour les dates précises.
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Comment prendre rendez-vous avec le Maire ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Envoyez un email à <strong>maire@mairie-marsassoum.sn</strong> en précisant
+            l'objet de votre demande d'audience. Le secrétariat du Maire vous contactera
+            pour confirmer une date. Pour les demandes urgentes, appelez le standard municipal.
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Où puis-je payer mes taxes locales ?
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Le paiement des taxes locales se fait auprès du Service Financier de la Mairie,
+            du lundi au vendredi de 8h à 16h. Apportez votre avis de paiement et une pièce
+            d'identité. Un reçu officiel vous sera délivré immédiatement.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — SERVICES D'URGENCE
+══════════════════════════════════════════ -->
+<section class="section-main">
+  <div class="container">
+    <div class="row mb-4 fade-up">
+      <div class="col-12 text-center">
+        <p class="section-label">Urgences</p>
+        <h2 class="section-title">Contacts d'urgence</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-sm-6 col-md-4 col-lg-3 fade-up delay-1">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="icon-box mx-auto mb-3"
+               style="background:#fee2e2;color:#dc2626;width:56px;height:56px;font-size:1.4rem;border-radius:12px;">
+            <i class="fas fa-ambulance"></i>
+          </div>
+          <h6 style="font-weight:700;color:#dc2626;">SAMU</h6>
+          <p style="font-size:1.1rem;font-weight:700;color:var(--text);">15</p>
+          <p style="font-size:.78rem;color:var(--muted);">Urgences médicales</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3 fade-up delay-2">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="icon-box mx-auto mb-3"
+               style="background:#dbeafe;color:#1d4ed8;width:56px;height:56px;font-size:1.4rem;border-radius:12px;">
+            <i class="fas fa-fire-extinguisher"></i>
+          </div>
+          <h6 style="font-weight:700;color:#1d4ed8;">Pompiers</h6>
+          <p style="font-size:1.1rem;font-weight:700;color:var(--text);">18</p>
+          <p style="font-size:.78rem;color:var(--muted);">Incendie & secours</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3 fade-up delay-3">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="icon-box mx-auto mb-3"
+               style="background:#d1fae5;color:#065f46;width:56px;height:56px;font-size:1.4rem;border-radius:12px;">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h6 style="font-weight:700;color:#065f46;">Gendarmerie</h6>
+          <p style="font-size:1.1rem;font-weight:700;color:var(--text);">+221 33 XXX XX XX</p>
+          <p style="font-size:.78rem;color:var(--muted);">Sécurité publique</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3 fade-up delay-4">
+        <div class="card-modern p-4 text-center h-100">
+          <div class="icon-box mx-auto mb-3"
+               style="background:var(--primary-light);color:var(--primary);width:56px;height:56px;font-size:1.4rem;border-radius:12px;">
+            <i class="fas fa-building"></i>
+          </div>
+          <h6 style="font-weight:700;color:var(--primary);">Mairie (urgences)</h6>
+          <p style="font-size:1.1rem;font-weight:700;color:var(--text);">+221 77 XXX XX XX</p>
+          <p style="font-size:.78rem;color:var(--muted);">Astreinte 24h/24</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 pb-4">
+
+      <!-- Identité -->
+      <div class="col-lg-4">
+        <div class="footer-brand">🏛️ Commune de Marsassoum</div>
+        <p class="footer-desc">
+          Portail officiel de la commune de Marsassoum, région de Sédhiou,
+          département de Marsassoum — Sénégal.
+        </p>
+        <div>
+          <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="col-6 col-lg-2">
+        <p class="footer-heading">Navigation</p>
+        <a href="index.html"      class="footer-link">Accueil</a>
+        <a href="mairie.html"     class="footer-link">La Mairie</a>
+        <a href="demarches.html"  class="footer-link">Démarches</a>
+        <a href="actualites.html" class="footer-link">Actualités</a>
+        <a href="territoire.html" class="footer-link">Territoire</a>
+        <a href="projets.html"    class="footer-link">Projets</a>
+        <a href="contact.html"    class="footer-link">Contact</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-6 col-lg-3">
+        <p class="footer-heading">Contact</p>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Hôtel de Ville, Place de l'Indépendance, Marsassoum</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+221 33 XXX XX XX</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>contact@mairie-marsassoum.sn</span>
+        </div>
+      </div>
+
+      <!-- Horaires -->
+      <div class="col-lg-3">
+        <p class="footer-heading">Horaires d'ouverture</p>
+        <div class="footer-hours">
+          <div><strong>Lundi – Vendredi</strong> : 8h00 – 17h00</div>
+          <div><strong>Samedi</strong> : 8h00 – 12h00</div>
+          <div style="color:rgba(255,255,255,.4);">Dimanche & jours fériés : Fermé</div>
+        </div>
+        <div class="mt-3 p-2 rounded"
+             style="background:rgba(200,150,12,.15);border:1px solid rgba(200,150,12,.3);">
+          <span style="font-size:.78rem;color:var(--accent);">
+            <i class="fas fa-phone me-1"></i>
+            <strong>Urgences :</strong> +221 77 XXX XX XX
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bas du footer -->
+    <div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span class="footer-bottom-text">
+          © 2025 Commune de Marsassoum — Tous droits réservés
+        </span>
+        <div class="d-flex gap-3">
+          <a href="#" class="footer-link" style="display:inline;">Mentions légales</a>
+          <a href="#" class="footer-link" style="display:inline;">Confidentialité</a>
+          <a href="#" class="footer-link" style="display:inline;">Accessibilité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bouton retour en haut -->
+<button id="backToTop" title="Retour en haut">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Leaflet (mini-carte de localisation) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Script principal -->
+<script src="js/script.js"></script>
+
+<script>
+  /* ── Mini-carte de localisation de la Mairie ── */
+  document.addEventListener('DOMContentLoaded', () => {
+    const mapContact = L.map('mapContact', {
+      center: [12.832, -15.980],
+      zoom: 15,
+      zoomControl: true,
+      scrollWheelZoom: false,
+      attributionControl: false
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapContact);
+
+    /* Marqueur de la Mairie */
+    const icon = L.divIcon({
+      html: '<div style="background:var(--primary,#1a4f72);color:#fff;width:36px;height:36px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);">'
+          + '<i class="fas fa-landmark" style="transform:rotate(45deg);font-size:.85rem;"></i></div>',
+      className: '',
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -38]
+    });
+
+    L.marker([12.832, -15.980], { icon })
+      .addTo(mapContact)
+      .bindPopup(
+        '<div style="font-family:\'DM Sans\',sans-serif;text-align:center;padding:.3rem;">'
+        + '<strong style="color:#1a4f72;">🏛️ Hôtel de Ville</strong><br>'
+        + '<span style="font-size:.78rem;color:#6b7a8d;">Commune de Marsassoum<br>'
+        + 'Place de l\'Indépendance</span>'
+        + '</div>',
+        { maxWidth: 200 }
+      )
+      .openPopup();
+  });
+
+
+  /* ── FAQ — Accordéon simple ── */
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon   = btn.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+
+    /* Ferme tous les panneaux ouverts */
+    document.querySelectorAll('.faq-answer.open').forEach(a => {
+      a.classList.remove('open');
+      a.previousElementSibling.querySelector('.faq-icon').classList.remove('rotated');
+    });
+
+    /* Ouvre celui cliqué si ce n'était pas déjà ouvert */
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.classList.add('rotated');
+    }
+  }
+</script>
+</body>
+</html>
